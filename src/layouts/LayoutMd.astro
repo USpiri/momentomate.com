@@ -38,7 +38,7 @@ const date = new Date(frontmatter.pubDate).toLocaleDateString("es-AR", {
               class="capitalize text-sm text-rose-400 font-bold flex flex-row"
             >
               <span>{date} •&nbsp;</span><div class="flex gap-2">
-                {frontmatter.tags.map((tag: string) => tag)}
+                {frontmatter.tags.map((tag: string) => <span>{tag}</span>)}
               </div>
             </div>
             <slot />
