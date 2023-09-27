@@ -3,6 +3,8 @@ import MSubtitle from "../components/MSubtitle.astro";
 import MTitle from "../components/MTitle.astro";
 import PostCard from "../components/PostCard.astro";
 import Layout from "../layouts/Layout.astro";
+
+const allPosts = await Astro.glob("../pages/podcast/*.md");
 ---
 
 <Layout title="Momento Mate">
@@ -12,18 +14,19 @@ import Layout from "../layouts/Layout.astro";
         <MTitle />
       </div>
       <MSubtitle>Podcasts</MSubtitle>
-      <div class="flex flex-col gap-2">
-        <PostCard
-          title="Ep. 1: Momento Mate"
-          description="¿Qué es 'Momento Mate'?, ¿Cómo surge? y ¿Quienes somos?"
-          url="1"
-        />
-        <PostCard
-          title="Ep. 2: Somos los Más Grandes del Mundo"
-          description="¿Qué significa y qué se siente 'Ser Argentino'?"
-          url="2"
-        />
-      </div>
+      <ul class="flex gap-4 flex-col">
+        {
+          allPosts.reverse().map((pod) => (
+            <li>
+              <PostCard
+                title={pod.frontmatter.title}
+                url={pod.url}
+                description={pod.frontmatter.description}
+              />
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </main>
 </Layout>
