@@ -1,9 +1,16 @@
+---
+import { Image } from "astro:assets";
+import image from "../assets/MM-logo.png";
+---
+
 <a href="/" class="flex items-center justify-center">
   <div>
-    <img
-      src="https://drive.google.com/uc?export=view&id=1Eek6ubmQNhE8p19dIoKVkKlFe0R-k4E1"
+    <Image
+      src={image}
       alt="Momento mate logo"
       class="h-16 md:h-32"
+      width="128"
+      height="128"
     />
   </div>
   <h1 class="text-rose-950 font-bold text-4xl md:text-6xl">Momento Mate</h1>
