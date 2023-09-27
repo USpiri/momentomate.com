@@ -1,0 +1,61 @@
+---
+import Footer from "./Footer.astro";
+import Navbar from "./Navbar.astro";
+
+import "@styles/global.scss";
+import "@styles/markdown.scss";
+
+const { frontmatter } = Astro.props;
+const date = new Date(frontmatter.pubDate).toLocaleDateString("es-AR", {
+  weekday: "long",
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{frontmatter.title}</title>
+  </head>
+  <body class="bg-rose-200">
+    <div class="min-h-screen">
+      <Navbar />
+      <main class="flex items-center flex-col">
+        <div class="max-w-3xl w-full mb-20 mt-8">
+          <div
+            class="capitalize text-sm text-rose-400 font-medium mb-1 flex flex-row"
+          >
+            <span>{date} •&nbsp;</span><div class="flex gap-2">
+              {frontmatter.tags.map((tag: string) => tag)}
+            </div>
+          </div>
+          <article class="markdown-body">
+            <slot />
+          </article>
+        </div>
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    padding: 45px;
+  }
+
+  @media (max-width: 767px) {
+    .markdown-body {
+      padding: 15px;
+    }
+  }
+</style>
