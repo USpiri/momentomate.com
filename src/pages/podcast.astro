@@ -1,0 +1,32 @@
+---
+import MSubtitle from "@components/MSubtitle.astro";
+import MTitle from "@components/MTitle.astro";
+import PostCard from "@components/PostCard.astro";
+import Layout from "@layouts/Layout.astro";
+
+const allPosts = await Astro.glob("../pages/podcast/*.md");
+---
+
+<Layout title="Sobre nosotros">
+  <main class="flex items-center flex-col">
+    <div class="max-w-3xl w-full">
+      <div class="pb-7 mt-4">
+        <MTitle />
+      </div>
+      <MSubtitle>Podcasts</MSubtitle>
+      <ul class="flex gap-4 flex-col">
+        {
+          allPosts.reverse().map((pod) => (
+            <li>
+              <PostCard
+                title={pod.frontmatter.title}
+                url={pod.url}
+                description={pod.frontmatter.description}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </main>
+</Layout>
