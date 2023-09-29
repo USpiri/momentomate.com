@@ -38,7 +38,16 @@ const date = new Date(frontmatter.pubDate).toLocaleDateString("es-AR", {
               class="capitalize text-sm text-rose-400 font-bold flex flex-row"
             >
               <span>{date} •&nbsp;</span><div class="flex gap-2">
-                {frontmatter.tags.map((tag: string) => <span>{tag}</span>)}
+                {
+                  frontmatter.tags.map((tag: string) => (
+                    <a
+                      class="visited:text-rose-400 text-rose-400 hover:text-rose-300 transition-all"
+                      href={`/tags/${tag}`}
+                    >
+                      #{tag}
+                    </a>
+                  ))
+                }
               </div>
             </div>
             <slot />
