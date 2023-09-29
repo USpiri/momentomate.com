@@ -12,7 +12,7 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
     <MTitle />
   </div>
   <MSubtitle>Listado de tags</MSubtitle>
-  <ul class="list-disc">
+  <ul class="list-disc px-10 md:px-0">
     {
       tags.map((tag) => (
         <li class="font-bold m-2 text-base md:text-xl text-rose-400 hover:text-rose-300 transition-all">
