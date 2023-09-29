@@ -4,7 +4,7 @@ import MTitle from "@components/MTitle.astro";
 import PostCard from "@components/PostCard.astro";
 import Layout from "@layouts/Layout.astro";
 
-const allPosts = await Astro.glob("../pages/podcast/*.md");
+const allPosts = await Astro.glob("./*.md");
 ---
 
 <Layout title="Sobre nosotros">
