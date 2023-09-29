@@ -5,6 +5,7 @@ import Navbar from "./Navbar.astro";
 
 import "@styles/global.scss";
 import "@styles/markdown.scss";
+import { ViewTransitions } from "astro:transitions";
 
 const { frontmatter } = Astro.props;
 const date = new Date(frontmatter.pubDate).toLocaleDateString("es-AR", {
@@ -24,6 +25,7 @@ const date = new Date(frontmatter.pubDate).toLocaleDateString("es-AR", {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{frontmatter.title}</title>
+    <ViewTransitions />
   </head>
   <body class="bg-rose-200">
     <div class="min-h-screen">
@@ -56,17 +58,16 @@ const date = new Date(frontmatter.pubDate).toLocaleDateString("es-AR", {
       </main>
     </div>
     <Footer />
-  </body>
-</html>
-<style>
-  .markdown-body {
-    box-sizing: border-box;
-    min-width: 200px;
-    max-width: 980px;
-  }
-
-  @media (max-width: 768px) {
+  </body><style>
     .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
     }
-  }
-</style>
+
+    @media (max-width: 768px) {
+      .markdown-body {
+      }
+    }
+  </style>
+</html>
