@@ -1,0 +1,49 @@
+---
+import MTitle from "@components/MTitle.astro";
+import PostCard from "@components/PostCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import MSubtitle from "@components/MSubtitle.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob("../**/*.md");
+
+  const allTags = [
+    ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+  ];
+
+  return allTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post: any) =>
+      post.frontmatter.tags?.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Layout title={tag ?? "Tags"}>
+  <div class="pb-7 mt-4">
+    <MTitle />
+  </div>
+  <div class="capitalize">
+    <MSubtitle>{tag}s</MSubtitle>
+  </div>
+  <ul class="flex gap-4 flex-col">
+    {
+      posts.map((pod: any) => (
+        <li>
+          <PostCard
+            title={pod.frontmatter.title}
+            url={pod.url}
+            description={pod.frontmatter.description}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
