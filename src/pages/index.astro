@@ -1,11 +1,14 @@
 ---
-import Stream from "@components/Stream.astro";
+import { getCollection } from "astro:content";
 import MSubtitle from "../components/MSubtitle.astro";
 import MTitle from "../components/MTitle.astro";
 import PostCard from "../components/PostCard.astro";
 import Layout from "../layouts/Layout.astro";
 
-const allPosts = await Astro.glob("../pages/podcast/*.md");
+const posts = await getCollection("posts");
+const filteredPosts = posts.filter((post: any) =>
+  post.slug.startsWith("podcast")
+);
 ---
 
 <Layout title="Momento Mate">
@@ -13,14 +16,14 @@ const allPosts = await Astro.glob("../pages/podcast/*.md");
     <MTitle />
   </div>
   <MSubtitle>Podcasts</MSubtitle>
-  <ul class="flex gap-4 flex-col">
+  <ul class="flex gap-4 flex-col pb-20">
     {
-      allPosts.reverse().map((pod) => (
+      filteredPosts.map((pod) => (
         <li>
           <PostCard
-            title={pod.frontmatter.title}
-            url={pod.url}
-            description={pod.frontmatter.description}
+            title={pod.data.title}
+            url={pod.slug}
+            description={pod.data.description}
           />
         </li>
       ))

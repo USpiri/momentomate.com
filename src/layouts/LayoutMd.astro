@@ -6,9 +6,14 @@ import Navbar from "./Navbar.astro";
 import "@styles/global.scss";
 import "@styles/markdown.scss";
 import { ViewTransitions } from "astro:transitions";
+import type { CollectionEntry } from "astro:content";
 
-const { frontmatter } = Astro.props;
-const date = new Date(frontmatter.pubDate).toLocaleDateString("es-AR", {
+export interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+const date = new Date(post.data.pubDate).toLocaleDateString("es-AR", {
   weekday: "long",
   year: "numeric",
   month: "short",
@@ -24,7 +29,7 @@ const date = new Date(frontmatter.pubDate).toLocaleDateString("es-AR", {
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{frontmatter.title}</title>
+    <title>{post.data.title}</title>
     <ViewTransitions />
   </head>
   <body class="bg-rose-200">
@@ -41,7 +46,7 @@ const date = new Date(frontmatter.pubDate).toLocaleDateString("es-AR", {
             >
               <span>{date} •&nbsp;</span><div class="flex gap-2">
                 {
-                  frontmatter.tags.map((tag: string) => (
+                  post.data.tags.map((tag: string) => (
                     <a
                       class="visited:text-rose-400 text-rose-400 hover:text-rose-300 transition-all"
                       href={`/tags/${tag}`}
@@ -58,16 +63,17 @@ const date = new Date(frontmatter.pubDate).toLocaleDateString("es-AR", {
       </main>
     </div>
     <Footer />
-  </body><style>
-    .markdown-body {
-      box-sizing: border-box;
-      min-width: 200px;
-      max-width: 980px;
-    }
-
-    @media (max-width: 768px) {
+    <style>
       .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
       }
-    }
-  </style>
+
+      @media (max-width: 768px) {
+        .markdown-body {
+        }
+      }
+    </style>
+  </body>
 </html>
