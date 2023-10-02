@@ -20,11 +20,21 @@ const text = "Bienvenidos a Momento Mate";
 
 <div class="flex flex-row gap-6 px-6">
   <img src={image} alt="Imagen que saluda" height="150" />
-  <SpeechBubble>{text}</SpeechBubble>
+  <SpeechBubble>
+    <p class="text-rose-950 text-xl md:text-2xl font-semibold">
+      {text}
+    </p>
+  </SpeechBubble>
 </div>
 <style>
   img {
-    height: 150px;
+    height: 50px;
     width: auto;
+  }
+  @media (min-width: 768px) {
+    img {
+      height: 150px;
+      width: auto;
+    }
   }
 </style>
