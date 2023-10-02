@@ -2,7 +2,7 @@
 import MTitle from "../components/MTitle.astro";
 import Layout from "../layouts/Layout.astro";
 import Stream from "@components/Stream.astro";
-import Message from "@components/Message.astro";
+import Message from "@components/Message.vue";
 ---
 
 <Layout title="Momento Mate">
@@ -13,6 +13,6 @@ import Message from "@components/Message.astro";
     <Stream />
   </div>
   <div class="mb-7">
-    <Message />
+    <Message client:only="vue" />
   </div>
 </Layout>
