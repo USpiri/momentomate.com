@@ -1,0 +1,35 @@
+---
+import SpeechBubble from "./SpeechBubble.astro";
+
+const images = [
+  "./src/assets/facu.png",
+  "./src/assets/joel.png",
+  "./src/assets/fabri.png",
+  "./src/assets/uriel.png",
+];
+const texts = [
+  "Bienvenidos a Momento Mate",
+  "Puto el que lee",
+  "Sucribete y siguenos en nuestras redes",
+  "Prepara un mate y únete a la conversación",
+];
+
+const getRandom = (array: any[]) => {
+  const indiceAleatorio = Math.floor(Math.random() * array.length);
+  return array[indiceAleatorio];
+};
+
+const image = getRandom(images);
+const text = getRandom(texts);
+---
+
+<div class="flex flex-row gap-6 px-6">
+  <img src={image} alt="Imagen que saluda" height="150" />
+  <SpeechBubble>{text}</SpeechBubble>
+</div>
+<style>
+  img {
+    height: 150px;
+    width: auto;
+  }
+</style>
