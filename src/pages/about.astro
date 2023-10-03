@@ -2,11 +2,88 @@
 import MSubtitle from "../components/MSubtitle.astro";
 import MTitle from "../components/MTitle.astro";
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import image from "../assets/matias.png";
+import facu from "../assets/facu.png";
+import fabri from "../assets/fabri.png";
+import joel from "../assets/joel.png";
+import uriel from "../assets/uriel.png";
+
+const images = [facu, joel, fabri, uriel];
 ---
 
 <Layout title="Sobre nosotros">
-  <div class="pb-7 mt-4">
+  <div class="mb-7 mt-4">
     <MTitle />
   </div>
-  <MSubtitle>Proximamente...</MSubtitle>
+  <MSubtitle>¡Bienvenidos!</MSubtitle>
+  <div class="bg-rose-100 rounded-lg p-6 mt-2 mb-14">
+    <div class="flex gap-3 items-center">
+      <div>
+        <div class="h-28 aspect-square flex justify-center">
+          <Image
+            src={image}
+            alt="Momento mate logo"
+            class="h-28"
+            height="112"
+          />
+        </div>
+      </div>
+      <p class="text-base md:text-lg font-semibold">
+        ¡Hola a todos! Soy Matías, el mate, y quiero contarles cómo comenzó
+        nuestra emocionante aventura con "Momento Mate".
+      </p>
+    </div>
+    <div class="px-6 my-6">
+      <p>
+        Todas los sábados, reúno a mis cuatro grandes amigos: Facu, Fabri, Joel
+        y Uriel. Nos conocemos desde hace años, y nuestras tardes siempre han
+        estado llenas de risas, historias y, por supuesto, buenos mates.
+      </p>
+      <br />
+      <p>
+        Un día soleado, mientras estábamos disfrutando de las conversaciones
+        habituales, se me ocurrió una idea emocionante. "¡Chicos! ¿qué les
+        parece si llevamos nuestras charlas a otro nivel y compartimos nuestras
+        historias con el mundo?". Así nació la idea de "Momento Mate". Cada uno
+        de nosotros tiene su propio enfoque y perspectiva, lo que promete una
+        mezcla emocionante.
+      </p>
+      <br />
+      <p>
+        Decidimos que cada episodio sería diferente, con un toque de humor y
+        reflexión. Aunque lo cierto es que a veces improvisamos. Así que, con
+        micrófonos en mano y una mesa llena de mates, comenzamos a grabar. En
+        nuestro primer episodio, nos presentamos. Les contamos cómo nos
+        conocimos y cómo surgió la idea del podcast.
+      </p>
+      <br />
+      <p>
+        En "Momento Mate", lo más importante es crear un ambiente amigable, como
+        el que disfrutamos nosotros en nuestras tardes de mate para que puedas
+        sentarte con nosotros, participar en la conversación y compartir
+        nuestras risas, siempre habrá un lugar reservado para ti.
+      </p>
+      <br />
+      <p>
+        <span class="font-semibold">¡Bienvenidos a "Momento Mate"!</span> ¡Ponte
+        cómodo, toma un matecito con nosotros y únete a la conversación! 🧉✨
+      </p>
+    </div>
+    <div class="flex align-middle justify-center gap-4 mb-4">
+      <div class="flex flex-row gap-4">
+        {
+          images.map((char) => (
+            <Image
+              src={char}
+              alt="Momento mate logo"
+              class="md:h-32 h-20 w-auto inline-block"
+              width="200"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </Layout>
