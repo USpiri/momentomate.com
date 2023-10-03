@@ -10,7 +10,12 @@ import fabri from "../assets/fabri.png";
 import joel from "../assets/joel.png";
 import uriel from "../assets/uriel.png";
 
-const images = [facu, joel, fabri, uriel];
+const characters = [
+  { name: "Facu", image: facu },
+  { name: "Joel", image: joel },
+  { name: "Fabri", image: fabri },
+  { name: "Uriel", image: uriel },
+];
 ---
 
 <Layout title="Sobre nosotros">
@@ -18,7 +23,7 @@ const images = [facu, joel, fabri, uriel];
     <MTitle />
   </div>
   <MSubtitle>¡Bienvenidos!</MSubtitle>
-  <div class="bg-rose-100 rounded-lg p-6 mt-2 mb-14">
+  <div class="bg-rose-100 rounded-lg p-6 mt-2 mb-14 text-rose-950">
     <div class="flex gap-3 items-center">
       <div>
         <div class="h-28 aspect-square flex justify-center">
@@ -74,13 +79,16 @@ const images = [facu, joel, fabri, uriel];
     <div class="flex align-middle justify-center gap-4 mb-4">
       <div class="flex flex-row gap-4">
         {
-          images.map((char) => (
-            <Image
-              src={char}
-              alt="Momento mate logo"
-              class="md:h-32 h-20 w-auto inline-block"
-              width="200"
-            />
+          characters.map((char) => (
+            <div class="flex flex-col items-center font-semibold">
+              <div class="mb-2">{char.name}</div>
+              <Image
+                src={char.image}
+                alt="Momento mate logo"
+                class="md:h-32 h-20 w-auto inline-block"
+                width="200"
+              />
+            </div>
           ))
         }
       </div>
