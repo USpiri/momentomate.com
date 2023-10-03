@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row gap-6 px-6 hover:scale-105 active:scale-90 transition-transform cursor-pointer select-none"
+  <div class="flex flex-row gap-6 mx-6 hover:scale-105 active:scale-90 transition-transform cursor-pointer select-none"
     @click="randomize">
     <img :src="image" alt="Imagen que saluda" height="150" class="char-image" />
     <div
