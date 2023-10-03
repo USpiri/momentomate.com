@@ -25,7 +25,7 @@ const date = new Date(post.data.pubDate).toLocaleDateString("es-AR", {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={post.data.description} />
     <meta name="viewport" content="width=device-width" />
     <link
       rel="icon"
