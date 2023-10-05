@@ -14,15 +14,5 @@ const mainCollection = defineCollection({
 });
 
 export const collections = {
-  podcast: mainCollection,
-  resource: mainCollection,
+  posts: mainCollection,
 };
-
-export const collectionMetadata = [
-  {
-    name: "podcast",
-  },
-  {
-    name: "resource",
-  },
-];
