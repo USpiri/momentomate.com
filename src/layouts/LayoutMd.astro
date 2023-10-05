@@ -1,12 +1,8 @@
 ---
-import MTitle from "@components/MTitle.astro";
-import Footer from "./Footer.astro";
-import Navbar from "./Navbar.astro";
-
-import "@styles/global.scss";
-import "@styles/markdown.scss";
 import type { CollectionEntry } from "astro:content";
+import MTitle from "@components/MTitle.astro";
 import Layout from "./Layout.astro";
+import "@styles/markdown.scss";
 
 export interface Props {
   post: CollectionEntry<"posts">;
