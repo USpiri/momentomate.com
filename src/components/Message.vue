@@ -2,8 +2,7 @@
   <div class="flex flex-row gap-6 mx-6 hover:scale-105 active:scale-90 transition-transform cursor-pointer select-none"
     @click="randomize">
     <img :src="image" alt="Imagen que saluda" height="150" class="char-image" />
-    <div
-      class="speech-booble p-3 md:p-5 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-rose-100">
+    <div class="speech-booble p-3 md:p-5 shadow-md bg-rose-100">
       <p class="text-rose-950 text-xl md:text-2xl font-semibold">
         {{ text }}
       </p>
