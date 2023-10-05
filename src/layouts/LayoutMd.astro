@@ -5,8 +5,8 @@ import Navbar from "./Navbar.astro";
 
 import "@styles/global.scss";
 import "@styles/markdown.scss";
-import { ViewTransitions } from "astro:transitions";
 import type { CollectionEntry } from "astro:content";
+import Layout from "./Layout.astro";
 
 export interface Props {
   post: CollectionEntry<"posts">;
@@ -21,62 +21,38 @@ const date = new Date(post.data.pubDate).toLocaleDateString("es-AR", {
 });
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={post.data.description} />
-    <meta name="viewport" content="width=device-width" />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧉</text></svg>"
-    />
-    <meta name="generator" content={Astro.generator} />
-    <title>{post.data.title}</title>
-    <ViewTransitions />
-  </head>
-  <body class="bg-rose-200">
-    <div class="min-h-screen">
-      <Navbar />
-      <main class="flex items-center flex-col">
-        <div class="max-w-3xl w-full mb-20 mt-4">
-          <div class="pb-7">
-            <MTitle />
-          </div>
-          <article class="markdown-body bg-rose-100 rounded-lg pt-5 p-8">
-            <div
-              class="capitalize text-sm text-rose-400 font-bold flex flex-row"
+<Layout title={post.data.title}>
+  <div class="pb-7">
+    <MTitle />
+  </div>
+  <article class="markdown-body bg-rose-100 rounded-lg pt-5 p-8">
+    <div class="capitalize text-sm text-rose-400 font-bold flex flex-row">
+      <span>{date} •&nbsp;</span><div class="flex gap-2">
+        {
+          post.data.tags.map((tag: string) => (
+            <a
+              class="visited:text-rose-400 text-rose-400 hover:text-rose-300 transition-all"
+              href={`/tags/${tag}`}
             >
-              <span>{date} •&nbsp;</span><div class="flex gap-2">
-                {
-                  post.data.tags.map((tag: string) => (
-                    <a
-                      class="visited:text-rose-400 text-rose-400 hover:text-rose-300 transition-all"
-                      href={`/tags/${tag}`}
-                    >
-                      #{tag}
-                    </a>
-                  ))
-                }
-              </div>
-            </div>
-            <slot />
-          </article>
-        </div>
-      </main>
-    </div>
-    <Footer />
-    <style>
-      .markdown-body {
-        box-sizing: border-box;
-        min-width: 200px;
-        max-width: 980px;
-      }
-
-      @media (max-width: 768px) {
-        .markdown-body {
+              #{tag}
+            </a>
+          ))
         }
-      }
-    </style>
-  </body>
-</html>
+      </div>
+    </div>
+    <slot />
+  </article>
+</Layout>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+  }
+
+  @media (max-width: 768px) {
+    .markdown-body {
+    }
+  }
+</style>
