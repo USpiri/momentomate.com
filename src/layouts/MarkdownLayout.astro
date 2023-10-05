@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import MTitle from "@components/MTitle.astro";
+import Card from "@components/Card.astro";
 import Layout from "./BaseLayout.astro";
 import "@styles/markdown.scss";
 
@@ -21,34 +22,23 @@ const date = new Date(post.data.pubDate).toLocaleDateString("es-AR", {
   <div class="pb-7 mt-4">
     <MTitle />
   </div>
-  <article class="markdown-body bg-rose-100 rounded-lg pt-5 p-8">
-    <div class="capitalize text-sm text-rose-400 font-bold flex flex-row">
-      <span>{date} •&nbsp;</span><div class="flex gap-2">
-        {
-          post.data.tags.map((tag: string) => (
-            <a
-              class="visited:text-rose-400 text-rose-400 hover:text-rose-300 transition-all"
-              href={`/tags/${tag}`}
-            >
-              #{tag}
-            </a>
-          ))
-        }
+  <article class="mb-10">
+    <Card class="markdown-body pt-5 p-8">
+      <div class="capitalize text-sm text-rose-400 font-bold flex flex-row">
+        <span>{date} •&nbsp;</span><div class="flex gap-2">
+          {
+            post.data.tags.map((tag: string) => (
+              <a
+                class="visited:text-rose-400 text-rose-400 hover:text-rose-300 transition-all"
+                href={`/tags/${tag}`}
+              >
+                #{tag}
+              </a>
+            ))
+          }
+        </div>
       </div>
-    </div>
-    <slot />
+      <slot />
+    </Card>
   </article>
 </Layout>
-
-<style>
-  .markdown-body {
-    box-sizing: border-box;
-    min-width: 200px;
-    max-width: 980px;
-  }
-
-  @media (max-width: 768px) {
-    .markdown-body {
-    }
-  }
-</style>

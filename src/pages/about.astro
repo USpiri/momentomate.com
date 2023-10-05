@@ -9,6 +9,7 @@ import facu from "@assets/facu.png";
 import fabri from "@assets/fabri.png";
 import joel from "@assets/joel.png";
 import uriel from "@assets/uriel.png";
+import Card from "@components/Card.astro";
 
 const characters = [
   { name: "Facu", image: facu },
@@ -23,7 +24,7 @@ const characters = [
     <MTitle />
   </div>
   <MSubtitle>¡Bienvenidos!</MSubtitle>
-  <div class="bg-rose-100 rounded-lg p-6 mt-2 mb-14 text-rose-950">
+  <Card class="p-6 mt-2 mb-14 text-rose-950">
     <div class="flex gap-3 items-center">
       <div>
         <div class="h-28 aspect-square flex justify-center">
@@ -93,5 +94,5 @@ const characters = [
         }
       </div>
     </div>
-  </div>
+  </Card>
 </Layout>
