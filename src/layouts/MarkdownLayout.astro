@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import MTitle from "@components/MTitle.astro";
-import Layout from "./Layout.astro";
+import Layout from "./BaseLayout.astro";
 import "@styles/markdown.scss";
 
 export interface Props {
@@ -18,7 +18,7 @@ const date = new Date(post.data.pubDate).toLocaleDateString("es-AR", {
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
-  <div class="pb-7">
+  <div class="pb-7 mt-4">
     <MTitle />
   </div>
   <article class="markdown-body bg-rose-100 rounded-lg pt-5 p-8">

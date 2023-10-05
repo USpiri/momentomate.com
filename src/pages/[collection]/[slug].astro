@@ -1,5 +1,5 @@
 ---
-import LayoutMd from "@layouts/LayoutMd.astro";
+import MarkdownLayout from "@layouts/MarkdownLayout.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 
@@ -20,6 +20,6 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<LayoutMd post={post}>
+<MarkdownLayout post={post}>
   <Content />
-</LayoutMd>
+</MarkdownLayout>
