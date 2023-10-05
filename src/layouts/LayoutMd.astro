@@ -21,7 +21,7 @@ const date = new Date(post.data.pubDate).toLocaleDateString("es-AR", {
 });
 ---
 
-<Layout title={post.data.title}>
+<Layout title={post.data.title} description={post.data.description}>
   <div class="pb-7">
     <MTitle />
   </div>
