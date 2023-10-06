@@ -38,7 +38,7 @@ const title = capitalizeFirstLetter(collection ?? "Momento Mate");
   <MSubtitle>{collection}</MSubtitle>
   <ul class="flex gap-4 flex-col mt-2">
     {
-      posts.reverse().map((pod: any) => (
+      posts.map((pod: any) => (
         <li>
           <PostCard
             title={pod.data.title}
