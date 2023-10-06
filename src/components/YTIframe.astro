@@ -1,0 +1,26 @@
+---
+interface Props {
+  video: string;
+}
+
+function getId(url: string) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+
+  return match && match[2].length === 11 ? match[2] : null;
+}
+
+const { video } = Astro.props;
+
+const videoId = getId(video);
+---
+
+<div class="bg-rose-300 rounded-lg p-2">
+  <iframe
+    src=`https://www.youtube.com/embed/${videoId}`
+    allowfullscreen
+    title="YouTube video player"
+    class="rounded-lg aspect-video w-full"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  ></iframe>
+</div>

@@ -1,7 +1,8 @@
 ---
+import YTIframe from "@components/YTIframe.astro";
 import MarkdownLayout from "@layouts/MarkdownLayout.astro";
 import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("posts");
@@ -15,11 +16,22 @@ export const getStaticPaths = (async () => {
     };
   });
 }) satisfies GetStaticPaths;
+interface Props {
+  post: CollectionEntry<"posts">;
+}
 
 const { post } = Astro.props;
+const { collection } = Astro.params;
 const { Content } = await post.render();
 ---
 
 <MarkdownLayout post={post}>
+  {
+    collection === "podcast" && post.data.video && (
+      <div>
+        <YTIframe video={post.data.video} />
+      </div>
+    )
+  }
   <Content />
 </MarkdownLayout>

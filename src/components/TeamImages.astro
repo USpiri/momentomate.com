@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import facu from "@assets/facu.png";
+import fabri from "@assets/fabri.png";
+import joel from "@assets/joel.png";
+import uriel from "@assets/uriel.png";
+const characters = [
+  { name: "Facu", image: facu },
+  { name: "Joel", image: joel },
+  { name: "Fabri", image: fabri },
+  { name: "Uriel", image: uriel },
+];
+---
+
+<div class="flex align-middle justify-center gap-4 mb-4">
+  <div class="flex flex-row gap-4">
+    {
+      characters.map((char) => (
+        <div class="flex flex-col items-center font-semibold">
+          <div class="mb-2">{char.name}</div>
+          <Image
+            src={char.image}
+            alt="Momento mate logo"
+            class="md:h-32 h-20 w-auto inline-block"
+            width="200"
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>
