@@ -3,14 +3,18 @@ import MTitle from "@components/MTitle.astro";
 import Layout from "@layouts/BaseLayout.astro";
 import Stream from "@components/Stream.astro";
 import Message from "@components/Message.vue";
+import Links from "@components/Links.astro";
 ---
 
 <Layout title="Momento Mate">
   <div class="pb-7 mt-4">
     <MTitle />
   </div>
-  <div class="mb-10">
+  <div class="mb-6">
     <Stream />
+  </div>
+  <div class="mb-6">
+    <Links />
   </div>
   <div class="mb-7">
     <Message client:only="vue" />

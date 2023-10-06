@@ -10,6 +10,10 @@ import fabri from "@assets/fabri.png";
 import joel from "@assets/joel.png";
 import uriel from "@assets/uriel.png";
 import Card from "@components/Card.astro";
+import InstagramIcon from "@components/icons/InstagramIcon.astro";
+import TikTokIcon from "@components/icons/TikTokIcon.astro";
+import TwitchIcon from "@components/icons/TwitchIcon.astro";
+import YouTubeIcon from "@components/icons/YouTubeIcon.astro";
 
 const characters = [
   { name: "Facu", image: facu },
@@ -92,6 +96,35 @@ const characters = [
             </div>
           ))
         }
+      </div>
+    </div>
+    <div class="flex flex-col mt-8">
+      <h3 class="text-center font-semibold text-rose-400 mb-5">
+        Siguenos en nuestras redes
+      </h3>
+      <div class="flex flex-row justify-around mb-1">
+        <a
+          href="https://www.twitch.tv/momentomate"
+          target="_blank"
+          class="fill-rose-800"
+        >
+          <TwitchIcon height="1.5em" />
+        </a>
+        <a
+          href="https://www.tiktok.com/@momentomate.podcast"
+          target="_blank"
+          class="fill-rose-800"><TikTokIcon height="1.5em" /></a
+        >
+        <a
+          href="https://www.youtube.com/@MomentoMate"
+          target="_blank"
+          class="fill-rose-800"><YouTubeIcon height="1.5em" /></a
+        >
+        <a
+          href="https://www.instagram.com/momentomate.podcast/"
+          target="_blank"
+          class="fill-rose-800"><InstagramIcon height="1.5em" /></a
+        >
       </div>
     </div>
   </Card>
