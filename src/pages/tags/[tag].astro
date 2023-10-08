@@ -38,12 +38,17 @@ const { posts } = Astro.props;
   </div>
   <ul class="flex gap-4 flex-col">
     {
-      posts.map((pod) => (
+      posts.map((post) => (
         <li>
           <PostCard
-            title={pod.data.title}
-            url={`/${pod.slug}`}
-            description={pod.data.description}
+            title={post.data.title}
+            url={`/${post.slug}`}
+            description={post.data.description}
+            image={
+              post.slug.split("/")[0] === "podcast" && !post.data.image
+                ? "/bg-micro.png"
+                : post.data.image
+            }
           />
         </li>
       ))

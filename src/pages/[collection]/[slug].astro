@@ -25,7 +25,12 @@ const { collection } = Astro.params;
 const { Content } = await post.render();
 ---
 
-<MarkdownLayout post={post}>
+<MarkdownLayout
+  post={post}
+  image={collection === "podcast" && !post.data.image
+    ? "/bg-micro.png"
+    : post.data.image}
+>
   {
     collection === "podcast" && post.data.video && (
       <div>
