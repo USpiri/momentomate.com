@@ -5,9 +5,10 @@ interface Props {
   title: string;
   description: string;
   url: string;
+  image?: string;
 }
 
-const { title, description, url } = Astro.props;
+const { title, description, url, image } = Astro.props;
 ---
 
 <Card class="hover:bg-rose-50 rounded-none md:rounded-lg transition-all">
@@ -15,8 +16,8 @@ const { title, description, url } = Astro.props;
     <div class="p-2 h-28 md:h-32 aspect-square">
       <img
         class="h-full w-full rounded-sm object-cover md:rounded-lg"
-        src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
-        alt=""
+        src={image ?? "/bg-micro.png"}
+        alt="Post Image"
       />
     </div>
     <div class="py-4 pe-4 ps-2 w-full overflow-hidden">
