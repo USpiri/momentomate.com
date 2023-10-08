@@ -9,15 +9,16 @@ import PostTags from "@components/PostTags.astro";
 
 export interface Props {
   post: CollectionEntry<"posts">;
+  image?: string;
 }
 
-const { post } = Astro.props;
+const { post, image = "/bg-matias.png" } = Astro.props;
 ---
 
 <Layout
   title={post.data.title}
   description={post.data.description}
-  image={post.data.image}
+  image={post.data.image ?? image}
 >
   <div class="pb-7 mt-4">
     <MTitle />
