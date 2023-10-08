@@ -4,39 +4,30 @@ import MTitle from "@components/MTitle.astro";
 import Card from "@components/Card.astro";
 import Layout from "./BaseLayout.astro";
 import "@styles/markdown.scss";
+import FormattedDate from "@components/FormattedDate.astro";
+import PostTags from "@components/PostTags.astro";
 
 export interface Props {
   post: CollectionEntry<"posts">;
 }
 
 const { post } = Astro.props;
-const date = new Date(post.data.pubDate).toLocaleDateString("es-AR", {
-  weekday: "long",
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-});
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+>
   <div class="pb-7 mt-4">
     <MTitle />
   </div>
   <article class="mb-10">
     <Card class="markdown-body pt-5 p-8">
       <div class="capitalize text-sm text-rose-400 font-bold flex flex-row">
-        <span>{date} •&nbsp;</span><div class="flex gap-2">
-          {
-            post.data.tags.map((tag: string) => (
-              <a
-                class="visited:text-rose-400 text-rose-400 hover:text-rose-300 transition-all"
-                href={`/tags/${tag}`}
-              >
-                #{tag}
-              </a>
-            ))
-          }
-        </div>
+        <span><FormattedDate date={post.data.pubDate} /> •&nbsp;</span><PostTags
+          tags={post.data.tags}
+        />
       </div>
       <slot />
     </Card>
