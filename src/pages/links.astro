@@ -1,0 +1,36 @@
+---
+import LinkCard from "@components/LinkCard.astro";
+import MSubtitle from "@components/MSubtitle.astro";
+import MTitle from "@components/MTitle.astro";
+import InstagramIcon from "@components/icons/InstagramIcon.astro";
+import TikTokIcon from "@components/icons/TikTokIcon.astro";
+import TwitchIcon from "@components/icons/TwitchIcon.astro";
+import YouTubeIcon from "@components/icons/YouTubeIcon.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Momento Mate | Redes">
+  <div class="mb-8 mt-4">
+    <MTitle />
+  </div>
+  <div class="flex items-center justify-center mb-3">
+    <MSubtitle>Nuestras redes</MSubtitle>
+  </div>
+  <div class="px-3 flex gap-3 flex-col">
+    <LinkCard href="https://www.twitch.tv/momentomate" label="Twitch">
+      <TwitchIcon height="100%" slot="icon" />
+    </LinkCard>
+    <LinkCard href="https://www.youtube.com/@MomentoMate" label="Youtube">
+      <YouTubeIcon height="100%" slot="icon" />
+    </LinkCard>
+    <LinkCard href="https://www.tiktok.com/@momentomate.podcast" label="TikTok">
+      <TikTokIcon height="100%" slot="icon" />
+    </LinkCard>
+    <LinkCard
+      href="https://www.instagram.com/momentomate.podcast/"
+      label="Instagram"
+    >
+      <InstagramIcon height="100%" slot="icon" />
+    </LinkCard>
+  </div>
+</BaseLayout>
