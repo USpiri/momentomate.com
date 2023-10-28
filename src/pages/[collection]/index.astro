@@ -35,7 +35,7 @@ const title = capitalizeFirstLetter(collection ?? "Momento Mate");
   <div class="pb-7 mt-4">
     <MTitle />
   </div>
-  <MSubtitle>{collection}</MSubtitle>
+  <MSubtitle><span class="capitalize">{collection}</span></MSubtitle>
   <ul class="flex gap-4 flex-col mt-2">
     {
       posts.map((post: any) => (

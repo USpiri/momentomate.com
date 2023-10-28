@@ -33,8 +33,8 @@ const { posts } = Astro.props;
   <div class="pb-7 mt-4">
     <MTitle />
   </div>
-  <div class="capitalize">
-    <MSubtitle>{tag}s</MSubtitle>
+  <div>
+    <MSubtitle><span class="capitalize">{tag}</span></MSubtitle>
   </div>
   <ul class="flex gap-4 flex-col">
     {
