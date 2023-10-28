@@ -3,7 +3,7 @@ title: "Un relato de los Argentinos - Jorge Guinzburg"
 pubDate: 2023-09-26
 description: "Lectura de Uri: Un relato de los Argentinos escrito por Jorge Guinzburg"
 author: "Momento Mate"
-tags: ["podcast", "recurso"]
+tags: ["recurso"]
 ---
 
 # Un relato de los Argentinos - Jorge Guinzburg
