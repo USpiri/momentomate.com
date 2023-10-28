@@ -4,6 +4,8 @@ import Layout from "@layouts/BaseLayout.astro";
 import Stream from "@components/Stream.astro";
 import Message from "@components/Message.vue";
 import Links from "@components/Links.astro";
+import MSubtitle from "@components/MSubtitle.astro";
+import LatestPodcasts from "@components/LatestPodcasts.astro";
 ---
 
 <Layout title="Momento Mate">
@@ -16,7 +18,11 @@ import Links from "@components/Links.astro";
   <div class="mb-6">
     <Links />
   </div>
-  <div class="mb-7">
+  <div class="mb-12 md:mb-24">
     <Message client:only="vue" />
+  </div>
+  <div class="mb-24 flex flex-col gap-3">
+    <MSubtitle>Últimos podcasts:</MSubtitle>
+    <LatestPodcasts />
   </div>
 </Layout>

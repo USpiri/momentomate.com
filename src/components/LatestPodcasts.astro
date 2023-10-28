@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import PostCard from "./PostCard.astro";
+const posts = await getCollection("posts");
+const podcasts = posts
+  .filter((post: any) => post.slug.startsWith("podcast"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<ul class="flex gap-4 flex-col mt-2">
+  {
+    podcasts.map((post: any) => (
+      <li>
+        <PostCard
+          title={post.data.title}
+          url={post.slug}
+          description={post.data.description}
+          image={post.data.image ? post.data.image : "/bg-micro.png"}
+        />
+      </li>
+    ))
+  }
+</ul>
